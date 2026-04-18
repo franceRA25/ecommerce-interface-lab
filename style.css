@@ -6,7 +6,11 @@
   --text-main: #333333;
   --border-light: #ccc;
 }
+#message {
+  display: flex;
+  position: relative;
 
+}
 header{
  animation: slide-in; 
   display: flex;
