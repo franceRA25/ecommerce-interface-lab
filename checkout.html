@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<form id="checkout-form">
+
 <section>
     <h2>Shipping/Checkout</h2>
 
@@ -13,26 +15,26 @@
         <label>Shipping Address</label><br><br>
 
         <label>Name:</label><br>
-        <input type="text" required><br><br>
+        <input type="text" id="name" required><br><br>
 
         <label>Street:</label><br>
-        <input type="text" required><br><br>
+        <input type="text" id="street" required><br><br>
 
         <label>Zip Code:</label><br>
-        <input type="text" required>
+        <input type="text" id="zip" required>
     </fieldset>
 </section>
 
 <section>
     <h2>Payment Method</h2>
 
-    <form>
-        <input type="radio" name="payment" required> Credit Card<br>
-        <input type="radio" name="payment"> PayPal<br><br>
+    <input type="radio" name="payment" value="card"> Credit Card<br>
+    <input type="radio" name="payment" value="paypal"> PayPal<br><br>
 
-        <button type="submit">Place Order</button>
-    </form>
+    <button type="submit">Place Order</button>
 </section>
+
+</form>
 
 <aside>
     <h3>Order Summary</h3>
@@ -41,5 +43,6 @@
     <p>Total: ₱17,415.00</p>
 </aside>
 
+<script src="solution.js"></script>
 </body>
 </html>

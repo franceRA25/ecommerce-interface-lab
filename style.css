@@ -6,11 +6,7 @@
   --text-main: #333333;
   --border-light: #ccc;
 }
-#message {
-  display: flex;
-  position: relative;
 
-}
 header{
  animation: slide-in; 
   display: flex;
@@ -322,4 +318,30 @@ to { transform: translateX(0%);
   0% {transform: scale(1);}
   50% {transform: scale(1.1);}
   100% {transform: scale(1);}
+}
+
+
+.error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+
+.fade-in {
+  animation: fadeEffect 0.4s ease;
+}
+
+@keyframes fadeEffect {
+  0% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: #dfffe0;
+  }
+  100% {
+    transform: scale(1);
+    background-color: transparent;
+  }
 }
