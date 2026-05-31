@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NeetCenter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">NeetCenter</div>
+    </header>
+
+    <section>
+        <h2>Login</h2>
+
+        <!-- Error message shown if login fails -->
+        <p id="error-message" style="color:red; display:none;">
+            Invalid username or password.
+        </p>
+
+        <!-- Login form submits to Spring Security's /login endpoint -->
+        <form id="login-form">
+            <label>Username:</label><br>
+            <input type="text" id="username" required><br><br>
+
+            <label>Password:</label><br>
+            <input type="password" id="password" required><br><br>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </section>
+
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - NeetCenter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">NeetCenter - Admin Panel</div>
+        <nav>
+            <a href="products.html">Products</a>
+            <button onclick="logout()">Logout</button>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Add New Product</h2>
+        <p id="error-message" style="color:red; display:none;"></p>
+        <p id="success-message" style="color:green; display:none;"></p>
+
+        <form id="add-product-form">
+            <label>Name:</label><br>
+            <input type="text" id="prod-name" required><br><br>
+            <label>Description:</label><br>
+            <input type="text" id="prod-desc" required><br><br>
+            <label>Price:</label><br>
+            <input type="number" id="prod-price" required><br><br>
+            <label>Stock:</label><br>
+            <input type="number" id="prod-stock" required><br><br>
+            <button type="submit">Add Product</button>
+        </form>
+    </section>
+
+    <script src="auth.js"></script>
+    <script>
+        // Check if user is logged in and has ADMIN role
+        // 401 redirects to login, 403 shows access denied
+        checkAuth();
+
+        document.getElementById("add-product-form")
+            .addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const product = {
+                name: document.getElementById("prod-name").value,
+                description: document.getElementById("prod-desc").value,
+                price: parseFloat(document.getElementById("prod-price").value),
+                stockQuantity: parseInt(document.getElementById("prod-stock").value),
+                imageUrl: ""
+            };
+
+            // Use authFetch to handle 401/403 automatically
+            const response = await authFetch(
+                "http://localhost:8080/api/v1/products", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(product)
+            });
+
+            if (response && response.ok) {
+                document.getElementById("success-message").textContent =
+                    "Product added successfully!";
+                document.getElementById("success-message").style.display = "block";
+                document.getElementById("error-message").style.display = "none";
+            } else if (response) {
+                const data = await response.json();
+                document.getElementById("error-message").textContent =
+                    data.errors ? data.errors.join(", ") : "Failed to add product.";
+                document.getElementById("error-message").style.display = "block";
+            }
+        });
+
+        function logout() {
+            fetch("http://localhost:8080/logout", {
+                method: "POST",
+                credentials: "include"
+            }).then(() => {
+                window.location.href = "login.html";
+            });
+        }
+    </script>
+</body>
+</html>

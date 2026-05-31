@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - NeetCenter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">NeetCenter</div>
+    </header>
+
+    <section>
+        <h2>Create Account</h2>
+
+        <p id="error-message" style="color:red; display:none;"></p>
+        <p id="success-message" style="color:green; display:none;">
+            Registration successful! <a href="login.html">Login here</a>
+        </p>
+
+        <form id="register-form">
+            <label>Username:</label><br>
+            <input type="text" id="username" required minlength="8" maxlength="20"><br><br>
+
+            <label>Password:</label><br>
+            <input type="password" id="password" required minlength="6"><br><br>
+
+            <label>Role:</label><br>
+            <select id="role">
+                <option value="ROLE_USER">Shopper</option>
+                <option value="ROLE_ADMIN">Admin/Seller</option>
+            </select><br><br>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </section>
+
+    <script src="register.js"></script>
+</body>
+</html>
